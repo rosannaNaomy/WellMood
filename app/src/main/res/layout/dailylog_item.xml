@@ -7,14 +7,15 @@
     android:background="@android:color/holo_blue_dark">
 
     <TextView
+        android:id="@+id/dailylog_dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Monday"
         android:textColor="@android:color/white"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:text="3/25"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:text="3/25"/>-->
 
 </LinearLayout>

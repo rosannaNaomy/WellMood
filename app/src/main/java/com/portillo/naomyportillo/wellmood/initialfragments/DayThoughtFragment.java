@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,20 +60,21 @@ public class DayThoughtFragment extends Fragment {
         thoughtEditText = view.findViewById(R.id.editText_thought);
         thoughtSubmitButton = view.findViewById(R.id.submit_button_thought);
 
-
-        dayThought = thoughtEditText.getText().toString();
-        args.putString(DAY_THOUGHT, dayThought);
-        setArguments(args);
-
-        onClick(args);
+        onClick();
 
     }
 
-    private void onClick(final Bundle fragmentBundle) {
+    private void onClick() {
         thoughtSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FeelFragment feelFragment = FeelFragment.newInstance(fragmentBundle);
+                dayThought = thoughtEditText.getText().toString();
+                args.putString(DAY_THOUGHT, dayThought);
+                setArguments(args);
+                Log.i("logfragment", ""+dayThought);
+                Log.i("logfragment", ""+dayDescription);
+
+                FeelFragment feelFragment = FeelFragment.newInstance(args);
                 onButtonPressed(feelFragment);
             }
         });

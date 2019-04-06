@@ -56,7 +56,7 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
                         + "' AND cause = '" + dayLog.getCause() + "';", null);
 
         if (cursor.getCount() != 0 || cursor.getCount() == 0) {
-            getWritableDatabase().execSQL("INSERT INTO " + TABLE_NAME + "(date_created, dayDescription, dayThought) " +
+            getWritableDatabase().execSQL("INSERT INTO " + TABLE_NAME + "(date_created, dayDescription, dayThought, mood, cause) " +
                     "VALUES ('" + getDateTime() + "', '" + dayLog.getDayDescription() + "', '" + dayLog.getThoughts() + "', '" + dayLog.getMood() + "', '" + dayLog.getCause() + "');");
         }
 

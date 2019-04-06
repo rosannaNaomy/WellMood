@@ -7,14 +7,22 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.portillo.naomyportillo.wellmood.DisplayLogActivity;
 import com.portillo.naomyportillo.wellmood.R;
+import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
+import com.portillo.naomyportillo.wellmood.model.DayLogModel;
+
+import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFragment.DAY_DESCRIPTION;
+import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFragment.DAY_THOUGHT;
+import static com.portillo.naomyportillo.wellmood.initialfragments.FeelFragment.MOOD;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,10 +33,15 @@ public class MoodCauseFragment extends Fragment {
     private static Bundle args;
     public static final String MOOD_CAUSE = "moodCause";
     private String moodCause;
+    private String dayDescription;
+    private String dayThought;
+    private String mood;
+
+
     private EditText moodCauseEditText;
     private Button causeSubmitButton;
-    private OnFragmentInteractionListener listener;
-
+    private DayLogDatabaseHelper dayLogDatabaseHelper;
+    private String daythought;
 
     public MoodCauseFragment() {
         // Required empty public constructor
@@ -42,9 +55,24 @@ public class MoodCauseFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            dayDescription = getArguments().getString(DAY_DESCRIPTION);
+            dayThought = getArguments().getString(DAY_THOUGHT);
+            mood = getArguments().getString(MOOD);
+            Log.i("logfragment - ON create", "" + dayDescription);
+            Log.i("logfragment - ON create", "" + mood);
+
+            Log.i("logfragment - ON create", "" + daythought);
+
+        }
+        dayLogDatabaseHelper = DayLogDatabaseHelper.getInstance(getContext());
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_mood_cause, container, false);
     }
 
@@ -55,24 +83,44 @@ public class MoodCauseFragment extends Fragment {
         moodCauseEditText = view.findViewById(R.id.moodCauseEditText);
         causeSubmitButton = view.findViewById(R.id.submitButton_cause);
 
-        moodCause = moodCauseEditText.getText().toString();
-        args.putString(MOOD_CAUSE, moodCause);
-        setArguments(args);
-
         onClick();
     }
+
+    private void addData() {
+        dayLogDatabaseHelper.addLog(new DayLogModel(null, dayDescription, dayThought, mood, moodCause));
+        Log.i("Note List", dayDescription + " " + dayThought + " " + mood + " " + moodCause);
+
+        Log.i("Note List", dayLogDatabaseHelper.getLogList().toString());
+
+    }
+//
+//    private void getData() {
+//        dayDescription = args.getString(DayThoughtFragment.DAY_DESCRIPTION);
+//        dayThought = args.getString(DayThoughtFragment.DAY_THOUGHT);
+//        mood = args.getString(FeelFragment.MOOD);
+//    }
 
     private void onClick() {
         causeSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                moodCause = moodCauseEditText.getText().toString();
+                args.putString(MOOD_CAUSE, moodCause);
+                setArguments(args);
+                addData();
+
+                Log.i("logfragment", "" + moodCause);
+                Log.i("logfragment", "" + mood);
+                Log.i("logfragment", "" + daythought);
+                Log.i("logfragment", "" + dayDescription);
                 Intent intent = new Intent(getContext(), DisplayLogActivity.class);
+                Toast.makeText(getContext(), "Your note has been added", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
+
             }
         });
     }
-
-
 
 
 }

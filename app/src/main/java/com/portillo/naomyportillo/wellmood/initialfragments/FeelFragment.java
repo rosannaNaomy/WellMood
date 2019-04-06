@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import com.portillo.naomyportillo.wellmood.R;
 
 import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFragment.DAY_DESCRIPTION;
+import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFragment.DAY_THOUGHT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,9 +28,12 @@ public class FeelFragment extends Fragment {
     private TextView terribleTextView;
     private TextView okayTextView;
     public static final String MOOD = "mood";
-    public String mood;
+
 
     private static Bundle args;
+    private String dayDescription;
+    private String daythought;
+    public String mood;
 
     public FeelFragment() {
     }
@@ -44,6 +49,9 @@ public class FeelFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            dayDescription = getArguments().getString(DAY_DESCRIPTION);
+            daythought = getArguments().getString(DAY_THOUGHT);
+
         }
     }
 
@@ -69,14 +77,18 @@ public class FeelFragment extends Fragment {
 
     }
 
-    private void textViewOnClick(View view, String text) {
-        mood = text;
-        args.putString(MOOD, mood);
-        setArguments(args);
+    private void textViewOnClick(View view, final String text) {
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mood = text;
+                args.putString(MOOD, mood);
+                setArguments(args);
+                Log.i("logfragment", ""+ mood);
+                Log.i("logfragment", ""+daythought);
+                Log.i("logfragment", ""+dayDescription);
                 MoodCauseFragment moodCauseFragment = MoodCauseFragment.newInstance(args);
                 onButtonPressed(moodCauseFragment);
             }
