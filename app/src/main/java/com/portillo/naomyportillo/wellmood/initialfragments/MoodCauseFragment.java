@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.portillo.naomyportillo.wellmood.DisplayLogActivity;
+import com.portillo.naomyportillo.wellmood.MainActivity;
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
 import com.portillo.naomyportillo.wellmood.model.DayLogModel;
@@ -114,7 +115,7 @@ public class MoodCauseFragment extends Fragment {
                 Log.i("logfragment", "" + mood);
                 Log.i("logfragment", "" + daythought);
                 Log.i("logfragment", "" + dayDescription);
-                Intent intent = new Intent(getContext(), DisplayLogActivity.class);
+                Intent intent = new Intent(getContext(), MainActivity.class);
                 Toast.makeText(getContext(), "Your note has been added", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
 

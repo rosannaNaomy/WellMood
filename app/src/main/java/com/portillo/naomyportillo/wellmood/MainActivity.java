@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
+
 public class MainActivity extends AppCompatActivity {
 
-    Button addLogbtn;
-    Button viewLogsbtn;
-    Intent intent;
+    private Button addLogbtn;
+    private Button viewLogsbtn;
+    private Button deleteLogsButton;
+    private Intent intent;
+    private DayLogDatabaseHelper dayLogDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +22,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        dayLogDatabaseHelper = DayLogDatabaseHelper.getInstance(this);
         addLogbtn = findViewById(R.id.addLog);
         viewLogsbtn = findViewById(R.id.viewLogs);
+        deleteLogsButton = findViewById(R.id.cleardata_button);
+
         OnclickBttns();
     }
 
@@ -39,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        deleteLogsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dayLogDatabaseHelper.clearLogList();
+            }
+        });
+
     }
 
 
