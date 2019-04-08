@@ -1,7 +1,6 @@
 package com.portillo.naomyportillo.wellmood.initialfragments;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.portillo.naomyportillo.wellmood.DisplayLogActivity;
 import com.portillo.naomyportillo.wellmood.MainActivity;
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;

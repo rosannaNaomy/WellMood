@@ -17,9 +17,7 @@ import com.portillo.naomyportillo.wellmood.R;
 import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFragment.DAY_DESCRIPTION;
 import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFragment.DAY_THOUGHT;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class FeelFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
