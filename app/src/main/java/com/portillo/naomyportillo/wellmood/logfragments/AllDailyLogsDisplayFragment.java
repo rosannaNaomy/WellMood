@@ -1,6 +1,7 @@
 package com.portillo.naomyportillo.wellmood.logfragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
 import com.portillo.naomyportillo.wellmood.initialfragments.FeelFragment;
+import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractionListener;
 import com.portillo.naomyportillo.wellmood.model.DayLogModel;
 import com.portillo.naomyportillo.wellmood.recyclerview.DayLogAdapter;
 
@@ -26,6 +28,7 @@ public class AllDailyLogsDisplayFragment extends Fragment {
 
     List<DayLogModel> logs;
     RecyclerView recyclerView;
+    OnFragmentInteractionListener listener;
 
     public AllDailyLogsDisplayFragment() {
     }
@@ -53,8 +56,24 @@ public class AllDailyLogsDisplayFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view_container);
 
-        recyclerView.setAdapter(new DayLogAdapter(logs));
+        recyclerView.setAdapter(new DayLogAdapter(listener, logs));
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            listener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 
 

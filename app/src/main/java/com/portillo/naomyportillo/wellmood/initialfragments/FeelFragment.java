@@ -30,7 +30,7 @@ public class FeelFragment extends Fragment {
 
     private static Bundle args;
     private String dayDescription;
-    private String daythought;
+    private String dayThought;
     public String mood;
 
     public FeelFragment() {
@@ -48,9 +48,12 @@ public class FeelFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             dayDescription = getArguments().getString(DAY_DESCRIPTION);
-            daythought = getArguments().getString(DAY_THOUGHT);
+            dayThought = getArguments().getString(DAY_THOUGHT);
 
         }
+
+        Log.d(".FeelFragment", "nummy - onCreate - thought: " + dayThought);
+        Log.d(".FeelFragment", "nummy - onCreate - description: " + dayDescription);
     }
 
     @Override
@@ -83,10 +86,14 @@ public class FeelFragment extends Fragment {
             public void onClick(View v) {
                 mood = text;
                 args.putString(MOOD, mood);
+                args.putString(DAY_DESCRIPTION, dayDescription);
+                args.putString(DAY_THOUGHT, dayThought);
                 setArguments(args);
-                Log.i("logfragment", ""+ mood);
-                Log.i("logfragment", ""+daythought);
-                Log.i("logfragment", ""+dayDescription);
+
+                Log.d(".FeelFragment", "nummy - onClick - thought: " + mood);
+                Log.d(".FeelFragment", "nummy - onClick - thought: " + dayThought);
+                Log.d(".FeelFragment", "nummy - onClick - description: " + dayDescription);
+
                 MoodCauseFragment moodCauseFragment = MoodCauseFragment.newInstance(args);
                 onButtonPressed(moodCauseFragment);
             }

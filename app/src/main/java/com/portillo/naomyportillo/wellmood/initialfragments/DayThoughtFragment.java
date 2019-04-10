@@ -35,6 +35,7 @@ public class DayThoughtFragment extends Fragment {
         DayThoughtFragment fragment = new DayThoughtFragment();
         args = new Bundle();
         args.putString(DAY_DESCRIPTION, dayDescription);
+        Log.d(".DayThoughtFragment", "nummy - description: " + dayDescription);
         fragment.setArguments(args);
         return fragment;
     }
@@ -45,6 +46,7 @@ public class DayThoughtFragment extends Fragment {
         if (getArguments() != null) {
             dayDescription = getArguments().getString(DAY_DESCRIPTION);
         }
+        Log.d(".DayThoughtFragment", "nummy - description: " + dayDescription);
     }
 
     @Override
@@ -60,6 +62,8 @@ public class DayThoughtFragment extends Fragment {
         thoughtEditText = view.findViewById(R.id.editText_thought);
         thoughtSubmitButton = view.findViewById(R.id.submit_button_thought);
 
+
+
         onClick();
 
     }
@@ -69,10 +73,13 @@ public class DayThoughtFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dayThought = thoughtEditText.getText().toString();
+                Log.d(".DayThoughtFragment", "nummy - editText_thoughts: " + dayThought);
                 args.putString(DAY_THOUGHT, dayThought);
+                args.putString(DAY_DESCRIPTION, dayDescription);
+
                 setArguments(args);
-                Log.i("logfragment", ""+dayThought);
-                Log.i("logfragment", ""+dayDescription);
+                Log.d(".DayThoughtFragment", "nummy - onClick - thought: " + dayThought);
+                Log.d(".DayThoughtFragment", "nummy - onClick - description: " + dayDescription);
 
                 FeelFragment feelFragment = FeelFragment.newInstance(args);
                 onButtonPressed(feelFragment);

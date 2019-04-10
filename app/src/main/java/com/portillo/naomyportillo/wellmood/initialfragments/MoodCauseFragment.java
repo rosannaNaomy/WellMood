@@ -1,6 +1,7 @@
 package com.portillo.naomyportillo.wellmood.initialfragments;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,9 +24,7 @@ import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFra
 import static com.portillo.naomyportillo.wellmood.initialfragments.DayThoughtFragment.DAY_THOUGHT;
 import static com.portillo.naomyportillo.wellmood.initialfragments.FeelFragment.MOOD;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class MoodCauseFragment extends Fragment {
 
 
@@ -40,10 +39,10 @@ public class MoodCauseFragment extends Fragment {
     private EditText moodCauseEditText;
     private Button causeSubmitButton;
     private DayLogDatabaseHelper dayLogDatabaseHelper;
-    private String daythought;
+    private OnFragmentInteractionListener listener;
+
 
     public MoodCauseFragment() {
-        // Required empty public constructor
     }
 
     public static MoodCauseFragment newInstance(Bundle bundle) {
@@ -60,10 +59,10 @@ public class MoodCauseFragment extends Fragment {
             dayDescription = getArguments().getString(DAY_DESCRIPTION);
             dayThought = getArguments().getString(DAY_THOUGHT);
             mood = getArguments().getString(MOOD);
-            Log.i("logfragment - ON create", "" + dayDescription);
-            Log.i("logfragment - ON create", "" + mood);
+            Log.d(".MoodCauseFragment", "nummy - onCreate - description: " + dayDescription);
+            Log.d(".MoodCauseFragment", "nummy - onCreate - mood: "  + mood);
 
-            Log.i("logfragment - ON create", "" + daythought);
+            Log.d(".MoodCauseFragment", "nummy - onCreate - thought: "  + dayThought);
 
         }
         dayLogDatabaseHelper = DayLogDatabaseHelper.getInstance(getContext());
@@ -92,12 +91,29 @@ public class MoodCauseFragment extends Fragment {
         Log.i("Note List", dayLogDatabaseHelper.getLogList().toString());
 
     }
-//
-//    private void getData() {
-//        dayDescription = args.getString(DayThoughtFragment.DAY_DESCRIPTION);
-//        dayThought = args.getString(DayThoughtFragment.DAY_THOUGHT);
-//        mood = args.getString(FeelFragment.MOOD);
-//    }
+
+    public void onButtonPressed(Fragment fragment) {
+        if (listener != null) {
+            listener.onFragmentInteraction(fragment);
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof OnFragmentInteractionListener) {
+            listener = (OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
 
     private void onClick() {
         causeSubmitButton.setOnClickListener(new View.OnClickListener() {
@@ -111,12 +127,12 @@ public class MoodCauseFragment extends Fragment {
 
                 Log.i("logfragment", "" + moodCause);
                 Log.i("logfragment", "" + mood);
-                Log.i("logfragment", "" + daythought);
+                Log.i("logfragment", "" + dayThought);
                 Log.i("logfragment", "" + dayDescription);
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                Toast.makeText(getContext(), "Your note has been added", Toast.LENGTH_SHORT).show();
-                startActivity(intent);
 
+                InitialFragment initialFragment = InitialFragment.newInstance();
+                Toast.makeText(getContext(), "Your note has been added", Toast.LENGTH_SHORT).show();
+                onButtonPressed(initialFragment);
             }
         });
     }

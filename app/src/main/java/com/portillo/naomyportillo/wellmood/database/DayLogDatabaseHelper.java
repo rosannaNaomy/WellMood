@@ -18,7 +18,9 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "dayLog.db";
     private static final String TABLE_NAME = "log";
+
     private static final int SCHEMA_VERSION = 1;
+
 
     private static DayLogDatabaseHelper singletonInstance;
 
@@ -91,6 +93,12 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
         return logList;
     }
 
+//    public Cursor getItemID(String date) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String query = "SELECT * FROM " + TABLE_NAME +
+//                " WHERE date_created = '" +  getDateTime() + "'";
+//                //"SELECT * FROM " + TABLE_NAME + " WHERE date_created = '" + getDateTime();
+//    }
 
     public void clearLogList() {
 
