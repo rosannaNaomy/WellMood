@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class DayLogModel {
 
-
     private String date;
     private String dayDescription;
     private String thoughts;

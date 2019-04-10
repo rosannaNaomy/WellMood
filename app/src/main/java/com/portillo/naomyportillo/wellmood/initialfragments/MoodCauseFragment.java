@@ -131,7 +131,7 @@ public class MoodCauseFragment extends Fragment {
                 Log.i("logfragment", "" + dayDescription);
 
                 InitialFragment initialFragment = InitialFragment.newInstance();
-                Toast.makeText(getContext(), "Your note has been added", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Your log has been added", Toast.LENGTH_SHORT).show();
                 onButtonPressed(initialFragment);
             }
         });

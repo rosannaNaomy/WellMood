@@ -1,5 +1,6 @@
 package com.portillo.naomyportillo.wellmood.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,6 +19,12 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "dayLog.db";
     private static final String TABLE_NAME = "log";
+    private static final String COL_ID = "ID";
+    private static final String COL_DATE = "DATE";
+    private static final String COL_DAY_DESCRIPTION = "DAY_DESCRIPTION";
+    private static final String COL_DAY_THOUGHT = "DAY_THOUGHT";
+    private static final String COL_MOOD = "MOOD";
+    private static final String COL_CAUSE = "CAUSE";
 
     private static final int SCHEMA_VERSION = 1;
 
@@ -38,32 +45,36 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(
-                "CREATE TABLE " + TABLE_NAME +
-                        "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "date_created DATETIME DEFAULT CURRENT_TIMESTAMP, dayDescription TEXT, dayThought TEXT, mood TEXT, cause TEXT);"
+                "create table " + TABLE_NAME + " (COL_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        "COL_DATE DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+                        "COL_DAY_DESCRIPTION TEXT, COL_DAY_THOUGHT  TEXT, " +
+                        "COL_MOOD TEXT, COL_CAUSE TEXT)"
         );
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+//        onCreate(db);
     }
 
     public void addLog(DayLogModel dayLog) {
         Cursor cursor = getReadableDatabase().rawQuery(
-                "SELECT * FROM " + TABLE_NAME + " WHERE date_created = '" + getDateTime()
-                        + "' AND dayDescription = '" + dayLog.getDayDescription()
-                        + "' AND  dayThought = '" + dayLog.getThoughts()
-                        + "' AND mood = '" + dayLog.getMood()
-                        + "' AND cause = '" + dayLog.getCause() + "';", null);
+                "SELECT * FROM " + TABLE_NAME + " WHERE " + COL_DATE + " = '" + getDateTime()
+                        + "' AND " + COL_DAY_DESCRIPTION + " = '" + dayLog.getDayDescription()
+                        + "' AND  " + COL_DAY_THOUGHT + " = '" + dayLog.getThoughts()
+                        + "' AND " + COL_MOOD + " = '" + dayLog.getMood()
+                        + "' AND " + COL_CAUSE + " = '" + dayLog.getCause() + "';", null);
 
         if (cursor.getCount() != 0 || cursor.getCount() == 0) {
-            getWritableDatabase().execSQL("INSERT INTO " + TABLE_NAME + "(date_created, dayDescription, dayThought, mood, cause) " +
+            getWritableDatabase().execSQL("INSERT INTO " + TABLE_NAME + "(COL_DATE, COL_DAY_DESCRIPTION, COL_DAY_THOUGHT, COL_MOOD, COL_CAUSE)" +
                     "VALUES ('" + getDateTime() + "', '" + dayLog.getDayDescription() + "', '" + dayLog.getThoughts() + "', '" + dayLog.getMood() + "', '" + dayLog.getCause() + "');");
         }
 
         cursor.close();
     }
+
+
 
     private String getDateTime() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
@@ -80,11 +91,12 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null) {
             if (cursor.moveToFirst()) {
                 do {
-                    DayLogModel logModel = new DayLogModel(cursor.getString(cursor.getColumnIndex("date_created")),
-                            cursor.getString(cursor.getColumnIndex("dayDescription")),
-                            cursor.getString(cursor.getColumnIndex("dayThought")),
-                            cursor.getString(cursor.getColumnIndex("mood")),
-                            cursor.getString(cursor.getColumnIndex("cause")));
+                    DayLogModel logModel = new DayLogModel(
+                            cursor.getString(cursor.getColumnIndex(COL_DATE)),
+                            cursor.getString(cursor.getColumnIndex(COL_DAY_DESCRIPTION)),
+                            cursor.getString(cursor.getColumnIndex(COL_DAY_THOUGHT)),
+                            cursor.getString(cursor.getColumnIndex(COL_MOOD)),
+                            cursor.getString(cursor.getColumnIndex(COL_CAUSE)));
                     logList.add(logModel);
                 } while (cursor.moveToNext());
             }
@@ -93,12 +105,33 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
         return logList;
     }
 
-//    public Cursor getItemID(String date) {
+//    public void updateData(DayLogModel dayLogModel) {
 //        SQLiteDatabase db = this.getWritableDatabase();
-//        String query = "SELECT * FROM " + TABLE_NAME +
-//                " WHERE date_created = '" +  getDateTime() + "'";
-//                //"SELECT * FROM " + TABLE_NAME + " WHERE date_created = '" + getDateTime();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(COL_ID, dayLogModel.getId());
+//        contentValues.put(COL_DATE, dayLogModel.getDate());
+//        contentValues.put(COL_DAY_DESCRIPTION, dayLogModel.getDayDescription());
+//        contentValues.put(COL_DAY_THOUGHT, dayLogModel.getThoughts());
+//        contentValues.put(COL_MOOD, dayLogModel.getMood());
+//        contentValues.put(COL_CAUSE, dayLogModel.getCause());
+//        db.update(TABLE_NAME, contentValues, "ID = ?", new String[]{dayLogModel.getId()});
 //    }
+
+    public void updateLog(String updatedCause, int id, String cause) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL_CAUSE + " = '" +updatedCause + "' WHERE " + COL_ID + " = '" + id + " ' " +
+                " AND " + COL_CAUSE + " = '" + cause + " ' ";
+        db.execSQL(query);
+    }
+
+    public Cursor getItemID(String date ) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + COL_ID + " FROM " + TABLE_NAME +
+                " WHERE " + COL_DATE + " = '" + date + " ' ";
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
 
     public void clearLogList() {
 
@@ -108,6 +141,5 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
     }
-
 
 }
