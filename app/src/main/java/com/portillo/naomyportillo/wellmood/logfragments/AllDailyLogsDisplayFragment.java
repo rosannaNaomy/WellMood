@@ -22,9 +22,6 @@ import com.portillo.naomyportillo.wellmood.recyclerview.DayLogAdapter;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AllDailyLogsDisplayFragment extends Fragment {
 
     List<DayLogModel> logs;
@@ -60,7 +57,8 @@ public class AllDailyLogsDisplayFragment extends Fragment {
 
         dayLogAdapter = new DayLogAdapter(listener, logs);
         recyclerView.setAdapter(dayLogAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
     }
 
     @Override

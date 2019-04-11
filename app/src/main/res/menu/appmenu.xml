@@ -5,7 +5,7 @@
     <item android:id="@+id/about"
         android:title="About WellMood"/>
     <item android:id="@+id/git"
-        android:title="GitHub"/>
+        android:title="GitHub Repo"/>
     <item android:id="@+id/linked"
         android:title="LinkedIn"/>
 </menu>

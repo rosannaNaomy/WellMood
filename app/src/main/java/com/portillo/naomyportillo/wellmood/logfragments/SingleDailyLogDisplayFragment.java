@@ -32,6 +32,9 @@ public class SingleDailyLogDisplayFragment extends Fragment {
 
     private TextView dayLogDateTextview;
     private TextView dayLogCauseTextView;
+    private TextView dayLogDescriptionTextView;
+    private TextView dayLogThoughtsTextView;
+    private TextView dayLogMoodTextView;
     private Button updateLogButton;
 
     private String dayLogDate;
@@ -83,11 +86,17 @@ public class SingleDailyLogDisplayFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dayLogDateTextview = view.findViewById(R.id.date_textview);
-        dayLogCauseTextView = view.findViewById(R.id.daylogdata_textview);
+        dayLogCauseTextView = view.findViewById(R.id.daylogcause_textview);
+        dayLogThoughtsTextView = view.findViewById(R.id.daylogthoughts_textview);
+        dayLogMoodTextView = view.findViewById(R.id.daylogmood_textview);
+        dayLogDescriptionTextView = view.findViewById(R.id.daylogdescription_textview);
         updateLogButton = view.findViewById(R.id.edit_cause_button);
 
+        dayLogMoodTextView.setText(dayLogMood);
         dayLogCauseTextView.setText(dayLogCause);
         dayLogDateTextview.setText(dayLogDate);
+        dayLogDescriptionTextView.setText(dayLogDescription);
+        dayLogThoughtsTextView.setText(dayLogThoughts);
 
         updateLogButton.setOnClickListener(new View.OnClickListener() {
             @Override

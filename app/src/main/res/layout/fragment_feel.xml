@@ -6,70 +6,140 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".initialfragments.FeelFragment">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/av_xml"
+        android:layout_width="match_parent"
+        android:layout_height="238dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="radar.json"
+        app:lottie_loop="true" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/av2_xml"
+        android:layout_width="445dp"
+        android:layout_height="229dp"
+        android:background="@android:color/transparent"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="animation-w800-h800.json"
+        app:lottie_loop="true" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/av3_xml"
+        android:layout_width="409dp"
+        android:layout_height="221dp"
+        android:background="@android:color/transparent"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="animation-w600-h600.json"
+        app:lottie_loop="true" />
+
     <TextView
         android:id="@+id/feel_textview"
-        android:layout_width="234dp"
-        android:layout_height="41dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="288dp"
         android:layout_marginEnd="8dp"
-        android:text="How do you feel right now?"
+        android:fontFamily="@font/allerta"
         android:gravity="center"
+        android:text="How do you feel right now?"
+        android:textColor="@color/darkerBlue"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/greatTextView"
-        android:layout_width="68dp"
-        android:layout_height="35dp"
+        android:id="@+id/excitingTextView"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
         android:gravity="center"
         android:text="Great"
+        android:textColor="@color/darkerBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/feel_textview" />
 
     <TextView
         android:id="@+id/badFeelTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="8dp"
-        android:text="Bad"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Bad"
+        android:textColor="@color/darkerBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greatTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/excitingTextView"
+        app:layout_constraintVertical_bias="0.072" />
 
     <TextView
         android:id="@+id/okatTextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
         android:text="Okay"
+        android:textColor="@color/darkerBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/badFeelTextView" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/excitingTextView"
+        app:layout_constraintTop_toBottomOf="@+id/feel_textview" />
 
     <TextView
         android:id="@+id/terribleTextview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
         android:text="Terrible"
+        android:textColor="@color/darkerBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/okatTextview" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toEndOf="@+id/badFeelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/okatTextview"
+        app:layout_constraintVertical_bias="0.391" />
 
 </android.support.constraint.ConstraintLayout>

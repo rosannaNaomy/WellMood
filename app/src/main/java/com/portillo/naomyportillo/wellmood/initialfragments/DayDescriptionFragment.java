@@ -19,12 +19,13 @@ public class DayDescriptionFragment extends Fragment {
 
     private OnFragmentInteractionListener listener;
     private TextView productiveDescription;
-    private TextView greatDescription;
-    private TextView badDescription;
+    private TextView excitingDescription;
+    private TextView unfortunateDescription;
     private TextView unpleasantDescription;
+    private TextView delightfulDescription;
+    private TextView lazyDescription;
 
     public DayDescriptionFragment() {
-        // Required empty public constructor
     }
 
     public static DayDescriptionFragment newInstance() {
@@ -47,18 +48,22 @@ public class DayDescriptionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         productiveDescription = view.findViewById(R.id.productiveTextView);
-        greatDescription = view.findViewById(R.id.greatTextView);
-        badDescription = view.findViewById(R.id.badTextView);
+        excitingDescription = view.findViewById(R.id.excitingTextView);
+        unfortunateDescription = view.findViewById(R.id.unfortunateTextView);
         unpleasantDescription = view.findViewById(R.id.unpleasantextView);
+        lazyDescription = view.findViewById(R.id.lazyTextView);
+        delightfulDescription = view.findViewById(R.id.delightfulTextView);
 
         textViewOnClick(productiveDescription, productiveDescription.getText().toString());
-        textViewOnClick(greatDescription, greatDescription.getText().toString());
-        textViewOnClick(badDescription, badDescription.getText().toString());
+        textViewOnClick(excitingDescription, excitingDescription.getText().toString());
+        textViewOnClick(unfortunateDescription, unfortunateDescription.getText().toString());
         textViewOnClick(unpleasantDescription, unpleasantDescription.getText().toString());
+        textViewOnClick(delightfulDescription, delightfulDescription.getText().toString());
+        textViewOnClick(lazyDescription, lazyDescription.getText().toString());
 
     }
 
-    private void textViewOnClick(final View view, final String text){
+    private void textViewOnClick(final View view, final String text) {
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
