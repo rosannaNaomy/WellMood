@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +23,9 @@ import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractio
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_CAUSE;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_DATE;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_DESCRIPTION;
+import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_ID;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_MOOD;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_THOUGHT;
-import static com.portillo.naomyportillo.wellmood.logfragments.SingleDailyLogDisplayFragment.DAY_LOG_ID;
 
 
 public class EditLogFragment extends Fragment {
@@ -39,7 +41,7 @@ public class EditLogFragment extends Fragment {
     private String dayLogMood;
     private String dayLogCause;
     private String dayLogDescription;
-    private int id;
+    private long id;
     private String updatedCause;
 
     public EditLogFragment() {
@@ -63,7 +65,7 @@ public class EditLogFragment extends Fragment {
             dayLogThoughts = getArguments().getString(DAY_LOG_THOUGHT);
             dayLogMood = getArguments().getString(DAY_LOG_MOOD);
             dayLogCause = getArguments().getString(DAY_LOG_CAUSE);
-            id = getArguments().getInt(DAY_LOG_ID);
+            id = getArguments().getLong(DAY_LOG_ID);
         }
     }
 
@@ -88,10 +90,17 @@ public class EditLogFragment extends Fragment {
 
                 dayLogDatabaseHelper.updateLog(updatedCause, id, dayLogCause);
 
+                Log.d(".EditLogFragment", "onCLick: " + updatedCause + " " + id + " " + dayLogCause);
+
                 Toast.makeText(getContext(), "Your log has been updated", Toast.LENGTH_SHORT).show();
 
-                InitialFragment initialFragment = InitialFragment.newInstance();
-                onButtonPressed(initialFragment);
+//                InitialFragment initialFragment = InitialFragment.newInstance();
+//                onButtonPressed(initialFragment);
+
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack();
+                fragmentManager.popBackStack();
+
             }
         });
     }

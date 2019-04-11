@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ public class AllDailyLogsDisplayFragment extends Fragment {
     List<DayLogModel> logs;
     RecyclerView recyclerView;
     OnFragmentInteractionListener listener;
+    DayLogAdapter dayLogAdapter;
 
     public AllDailyLogsDisplayFragment() {
     }
@@ -56,7 +58,8 @@ public class AllDailyLogsDisplayFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recycler_view_container);
 
-        recyclerView.setAdapter(new DayLogAdapter(listener, logs));
+        dayLogAdapter = new DayLogAdapter(listener, logs);
+        recyclerView.setAdapter(dayLogAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
@@ -76,5 +79,13 @@ public class AllDailyLogsDisplayFragment extends Fragment {
         listener = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(AllDailyLogsDisplayFragment.class.getName(), "onResume: " + "updating log list");
+        DayLogDatabaseHelper dayLogDatabaseHelper = DayLogDatabaseHelper.getInstance(getContext());
+        logs = dayLogDatabaseHelper.getLogList();
+        dayLogAdapter.updateLogs(logs);
 
+    }
 }

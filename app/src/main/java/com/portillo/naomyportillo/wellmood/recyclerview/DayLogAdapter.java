@@ -40,4 +40,8 @@ public class DayLogAdapter extends RecyclerView.Adapter<DayLogHolder> {
         return logModels.size();
     }
 
+    public void updateLogs(List<DayLogModel> logs) {
+        logModels = logs;
+        notifyDataSetChanged();
+    }
 }

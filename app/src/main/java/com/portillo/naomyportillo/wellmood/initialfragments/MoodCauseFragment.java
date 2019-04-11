@@ -85,7 +85,7 @@ public class MoodCauseFragment extends Fragment {
     }
 
     private void addData() {
-        dayLogDatabaseHelper.addLog(new DayLogModel(null, dayDescription, dayThought, mood, moodCause));
+        dayLogDatabaseHelper.addLog(new DayLogModel(-1,null, dayDescription, dayThought, mood, moodCause));
         Log.i("Note List", dayDescription + " " + dayThought + " " + mood + " " + moodCause);
 
         Log.i("Note List", dayLogDatabaseHelper.getLogList().toString());

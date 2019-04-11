@@ -2,7 +2,6 @@ package com.portillo.naomyportillo.wellmood.logfragments;
 
 
 import android.content.Context;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,23 +16,22 @@ import android.widget.TextView;
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
 import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractionListener;
-import com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder;
 
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_DATE;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_CAUSE;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_DESCRIPTION;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_MOOD;
 import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_THOUGHT;
+import static com.portillo.naomyportillo.wellmood.recyclerview.DayLogHolder.DAY_LOG_ID;
 
 
 public class SingleDailyLogDisplayFragment extends Fragment {
 
 
     private static Bundle args;
-    public static final String DAY_LOG_ID = "ID";
 
     private TextView dayLogDateTextview;
-    private TextView dayLogThoughsTextView;
+    private TextView dayLogCauseTextView;
     private Button updateLogButton;
 
     private String dayLogDate;
@@ -41,10 +39,9 @@ public class SingleDailyLogDisplayFragment extends Fragment {
     private String dayLogMood;
     private String dayLogCause;
     private String dayLogDescription;
-    private int id;
+    private long id;
     private DayLogDatabaseHelper dayLogDatabaseHelper;
     OnFragmentInteractionListener listener;
-
 
     public SingleDailyLogDisplayFragment() {
     }
@@ -67,11 +64,12 @@ public class SingleDailyLogDisplayFragment extends Fragment {
             dayLogThoughts = getArguments().getString(DAY_LOG_THOUGHT);
             dayLogMood = getArguments().getString(DAY_LOG_MOOD);
             dayLogCause = getArguments().getString(DAY_LOG_CAUSE);
+            id = getArguments().getLong(DAY_LOG_ID);
         }
-
         Log.d(".SingleDailyLogDisplay", "nummy - thoughts: " + dayLogThoughts);
         Log.d(".SingleDailyLogDisplay", "nummy - cause: " + dayLogCause);
         Log.d(".SingleDailyLogDisplay", "nummy - date: " + dayLogDate);
+        Log.d(".SingleDailyLogDisplay", "nummy - id: " + id);
     }
 
     @Override
@@ -85,21 +83,17 @@ public class SingleDailyLogDisplayFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         dayLogDateTextview = view.findViewById(R.id.date_textview);
-        dayLogThoughsTextView = view.findViewById(R.id.daylogdata_textview);
+        dayLogCauseTextView = view.findViewById(R.id.daylogdata_textview);
         updateLogButton = view.findViewById(R.id.edit_cause_button);
 
-        dayLogThoughsTextView.setText(dayLogThoughts);
+        dayLogCauseTextView.setText(dayLogCause);
         dayLogDateTextview.setText(dayLogDate);
 
         updateLogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Cursor data = dayLogDatabaseHelper.getItemID(dayLogDate);
 
-
-                id = data.getInt(0);
-                args.putInt(DAY_LOG_ID,id);
-                setArguments(args);
+                Log.d("dayLogID: ", id + "");
 
                 EditLogFragment editLogFragment = EditLogFragment.newInstance(args);
                 onButtonPressed(editLogFragment);
@@ -123,6 +117,7 @@ public class SingleDailyLogDisplayFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
     @Override
     public void onDetach() {
         super.onDetach();

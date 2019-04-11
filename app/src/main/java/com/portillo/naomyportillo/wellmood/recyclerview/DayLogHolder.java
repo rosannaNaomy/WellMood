@@ -1,24 +1,17 @@
 package com.portillo.naomyportillo.wellmood.recyclerview;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.portillo.naomyportillo.wellmood.MainActivity;
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractionListener;
 import com.portillo.naomyportillo.wellmood.logfragments.SingleDailyLogDisplayFragment;
 import com.portillo.naomyportillo.wellmood.model.DayLogModel;
-
-import com.portillo.naomyportillo.wellmood.MainActivity;
 
 public class DayLogHolder extends RecyclerView.ViewHolder {
 
@@ -30,6 +23,8 @@ public class DayLogHolder extends RecyclerView.ViewHolder {
     public static final String DAY_LOG_DATE = "dayDate";
     public static final String DAY_LOG_MOOD = "dayMood";
     public static final String DAY_LOG_CAUSE = "dayCause";
+    public static final String DAY_LOG_ID = "dayId";
+
 
     public DayLogHolder(@NonNull View itemView) {
         super(itemView);
@@ -44,9 +39,12 @@ public class DayLogHolder extends RecyclerView.ViewHolder {
 
         dateTextView.setText(logModel.getDate());
 
-        Log.d(".DayHolderActivity", "nummy - date" + logModel.getDate());
-        Log.d(".DayHolderActivity", "nummy - thoughts: " +logModel.getThoughts());
-        Log.d(".DayHolderActivity", "nummy - cause: " +logModel.getCause());
+        Log.d(".DayHolder", "nummy - date" + logModel.getDate());
+        Log.d(".DayHolder", "nummy - thoughts: " +logModel.getThoughts());
+        Log.d(".DayHolder", "nummy - cause: " +logModel.getCause());
+        Log.d(".DayHolder", "nummy - id: " + logModel.getId());
+
+        bundle.putLong(DAY_LOG_ID, logModel.getId());
         bundle.putString(DAY_LOG_DATE, logModel.getDate());
         bundle.putString(DAY_LOG_DESCRIPTION, logModel.getDayDescription());
         bundle.putString(DAY_LOG_THOUGHT, logModel.getThoughts());

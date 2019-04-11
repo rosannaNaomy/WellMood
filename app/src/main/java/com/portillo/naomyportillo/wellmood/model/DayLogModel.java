@@ -1,7 +1,5 @@
 package com.portillo.naomyportillo.wellmood.model;
 
-import java.util.Date;
-
 public class DayLogModel {
 
     private String date;
@@ -10,12 +8,23 @@ public class DayLogModel {
     private String mood;
     private String cause;
 
-    public DayLogModel(String date, String dayDescription, String thoughts, String mood, String cause) {
+    private long id;
+
+    public DayLogModel(long id, String date, String dayDescription, String thoughts, String mood, String cause) {
+        this.id = id;
         this.date = date;
         this.dayDescription = dayDescription;
         this.thoughts = thoughts;
         this.mood = mood;
         this.cause = cause;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getDate() {
