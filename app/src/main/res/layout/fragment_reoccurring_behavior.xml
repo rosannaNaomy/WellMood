@@ -7,59 +7,56 @@
     tools:context=".logfragments.ReoccurringBehaviorFragment">
 
     <TextView
-        android:id="@+id/feel_textview"
+        android:id="@+id/reoccurring_textview"
         android:layout_width="234dp"
         android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="76dp"
         android:layout_marginEnd="8dp"
-        android:text="How do you feel right now?"
+        android:text="This month's reoccurring behavior"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/greatTextView"
+        android:id="@+id/reoccurring_greatTextView"
         android:layout_width="68dp"
         android:layout_height="35dp"
         android:layout_marginStart="92dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="Great"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/feel_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/reoccurring_textview" />
 
     <TextView
-        android:id="@+id/badFeelTextView"
+        android:id="@+id/reoccurring_badFeelTextView"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:text="Bad"
         android:gravity="center"
+        android:text="Bad"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/greatTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/reoccurring_greatTextView" />
 
     <TextView
-        android:id="@+id/okatTextview"
+        android:id="@+id/reoccurring_okatTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
         android:text="Okay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/badFeelTextView" />
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="338dp" />
 
     <TextView
-        android:id="@+id/terribleTextview"
+        android:id="@+id/reoccurring_terribleTextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -69,7 +66,61 @@
         android:text="Terrible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.325"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/okatTextview" />
+        app:layout_constraintTop_toBottomOf="@+id/reoccurring_okatTextview"
+        app:layout_constraintVertical_bias="0.292" />
+
+
+    <ImageView
+        android:id="@+id/load_great_imageView"
+        android:layout_width="70dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintStart_toEndOf="@+id/reoccurring_greatTextView"
+        app:layout_constraintTop_toBottomOf="@+id/reoccurring_textview" />
+
+    <ImageView
+        android:id="@+id/load_bad_imageView"
+        android:layout_width="70dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toEndOf="@+id/reoccurring_badFeelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/load_great_imageView" />
+
+    <ImageView
+        android:id="@+id/load_okay_imageView"
+        android:layout_width="70dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toEndOf="@+id/reoccurring_okatTextview"
+        app:layout_constraintTop_toBottomOf="@+id/load_bad_imageView" />
+
+    <ImageView
+        android:id="@+id/load_terrible_imageView"
+        android:layout_width="70dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintStart_toEndOf="@+id/reoccurring_terribleTextview"
+        app:layout_constraintTop_toBottomOf="@+id/load_okay_imageView"
+        app:layout_constraintVertical_bias="0.19" />
 
 </android.support.constraint.ConstraintLayout>
