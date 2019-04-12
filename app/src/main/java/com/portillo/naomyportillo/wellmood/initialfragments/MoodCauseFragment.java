@@ -81,6 +81,10 @@ public class MoodCauseFragment extends Fragment {
         moodCauseEditText = view.findViewById(R.id.moodCauseEditText);
         causeSubmitButton = view.findViewById(R.id.submitButton_cause);
 
+        if (savedInstanceState != null){
+            moodCauseEditText.setText(savedInstanceState.getString("inputEditText"));
+        }
+
         onClick();
     }
 
@@ -90,6 +94,12 @@ public class MoodCauseFragment extends Fragment {
 
         Log.i("Note List", dayLogDatabaseHelper.getLogList().toString());
 
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("inputEditText", moodCauseEditText.getText().toString());
     }
 
     public void onButtonPressed(Fragment fragment) {

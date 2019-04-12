@@ -66,7 +66,7 @@ public class FeelFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        greatTextView = view.findViewById(R.id.greatTextView);
+        greatTextView = view.findViewById(R.id.excitingTextView);
         badTextView = view.findViewById(R.id.badFeelTextView);
         okayTextView = view.findViewById(R.id.okatTextview);
         terribleTextView = view.findViewById(R.id.terribleTextview);

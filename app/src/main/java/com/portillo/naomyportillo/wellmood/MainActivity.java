@@ -1,6 +1,7 @@
 package com.portillo.naomyportillo.wellmood;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -52,6 +53,16 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         return true;
     }
 
+    public void linkIntent(String link) {
+
+        Intent openLink = new Intent(Intent.ACTION_VIEW);
+        openLink.setData(Uri.parse(link));
+
+        if (openLink.resolveActivity(getPackageManager()) != null) {
+            startActivity(openLink);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ((item.getItemId())) {
@@ -60,15 +71,14 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 return true;
 
             case R.id.git:
-                Toast.makeText(this, "github", Toast.LENGTH_SHORT).show();
+                linkIntent(getString(R.string.gitHubLink));
                 return true;
 
             case R.id.linked:
-                Toast.makeText(this, "linkedin", Toast.LENGTH_SHORT).show();
+                linkIntent(getString(R.string.linkedInLink));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
-
         }
     }
 }

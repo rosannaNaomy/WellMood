@@ -31,7 +31,7 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     COL_DATE + " DATETIME DEFAULT (datetime('now','localtime'))," +
                     COL_DAY_DESCRIPTION + " TEXT," +
-                    COL_DAY_THOUGHT+ " TEXT," +
+                    COL_DAY_THOUGHT + " TEXT," +
                     COL_MOOD + " TEXT," +
                     COL_CAUSE + " TEXT)";
 
@@ -73,13 +73,12 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
             Cursor cursor = db.rawQuery("SELECT " + COL_DATE + " from " + TABLE_NAME + " where id = " + insertedRowId, null);
             if (cursor.moveToNext()) {
                 dayLog.setDate(cursor.getString(cursor.getColumnIndex(COL_DATE)));
-            }
-            else {
+            } else {
                 throw new Exception("oops");
             }
 
             db.close();
-        }catch (Exception e) {
+        } catch (Exception e) {
             Log.e("NAOMY", "oops", e);
         }
     }
@@ -110,13 +109,12 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
     public void updateLog(String updatedCause, long id, String cause) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "UPDATE " + TABLE_NAME + " SET " + COL_CAUSE  + " = '" + updatedCause + "' WHERE  " + COL_ID  + " =" + id +
-                " AND " + COL_CAUSE + " ='" + cause+"'" ;
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL_CAUSE + " = ?  WHERE  " + COL_ID + " = ? AND " + COL_CAUSE + " = ? ";
+        String selectionArgs[] = {updatedCause, String.valueOf(id), cause};
         Log.d(DayLogDatabaseHelper.class.getName(), "updateLog: " + query);
 
-        db.execSQL(query);
+        db.execSQL(query, selectionArgs);
     }
-
 
     public void clearLogList() {
 
@@ -126,7 +124,6 @@ public class DayLogDatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
     }
-
 
 //    private String getDateTime(long datetime) {
 //        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());

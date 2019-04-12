@@ -76,11 +76,21 @@ public class EditLogFragment extends Fragment {
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("inputEditText", editLogText.getText().toString());
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         editLogText = view.findViewById(R.id.editLog_moodCauseEditText);
         sumbitUpdateButton = view.findViewById(R.id.edit_log_submit_button);
+
+        if (savedInstanceState != null){
+            editLogText.setText(savedInstanceState.getString("inputEditText"));
+        }
 
         sumbitUpdateButton.setOnClickListener(new View.OnClickListener() {
             @Override
