@@ -62,7 +62,9 @@ public class DayThoughtFragment extends Fragment {
         thoughtEditText = view.findViewById(R.id.editText_thought);
         thoughtSubmitButton = view.findViewById(R.id.submit_button_thought);
 
-
+        if (savedInstanceState != null){
+            thoughtEditText.setText(savedInstanceState.getString("inputEditText"));
+        }
 
         onClick();
 
@@ -85,6 +87,12 @@ public class DayThoughtFragment extends Fragment {
                 onButtonPressed(feelFragment);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("inputEditText", thoughtEditText.getText().toString());
     }
 
     public void onButtonPressed(Fragment fragment) {

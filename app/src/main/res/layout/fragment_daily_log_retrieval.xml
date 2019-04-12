@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".logfragments.SingleDailyLogDisplayFragment"
-    android:background="@color/darkerBlue">
+    android:background="@color/darkerBlue"
+    tools:context=".logfragments.SingleDailyLogDisplayFragment">
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,6 +24,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.805" />
+
     <TextView
         android:id="@+id/yourLog_textview"
         android:layout_width="wrap_content"
@@ -31,12 +32,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
-        android:text="Your log for:"
-        android:textColor="@color/yellow"
-        android:textStyle="bold"
-        android:fontFamily="@font/allerta"
-        android:textSize="20sp"
         android:background="@android:color/transparent"
+        android:fontFamily="@font/allerta"
+        android:text="@string/retrieval_your_log_for"
+        android:textColor="@color/yellow"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,16 +48,16 @@
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/allerta"
-        android:text="This day was:"
+        android:text="@string/retrieval_this_day_was"
         android:textColor="@color/darkerBlue"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.307"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.286"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
@@ -68,10 +69,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="156dp"
         android:background="@android:color/transparent"
-        android:text="date"
+        android:fontFamily="@font/allerta"
+        android:text="@string/date_text"
         android:textColor="@color/yellow"
         android:textStyle="bold"
-        android:fontFamily="@font/allerta"
         app:layout_constraintBottom_toTopOf="@+id/onthisday_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,40 +83,39 @@
         android:id="@+id/log_thought_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="104dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/allerta"
-        android:text="Your thoughts for this day:"
+        android:text="@string/retrieval_thoughts_for_this_day"
         android:textColor="@color/darkerBlue"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.478"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/onthisday_text"
         app:layout_constraintTop_toBottomOf="@+id/onthisday_text" />
 
     <TextView
         android:id="@+id/log_mood_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="12dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/allerta"
-        android:text="You were feeling:"
+        android:text="@string/retrieval_you_were_feeling"
         android:textColor="@color/darkerBlue"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/daylogthoughts_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
     <TextView
         android:id="@+id/log_cause_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/allerta"
-        android:text="The cause for this feeling:"
+        android:text="@string/retrieval_cause_for_this_feeling"
         android:textColor="@color/darkerBlue"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
@@ -128,11 +128,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/allerta"
-        android:text="description"
+        android:text="@string/description_text"
         android:textColor="@color/darkBlue"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
@@ -140,18 +140,6 @@
         app:layout_constraintStart_toEndOf="@+id/onthisday_text"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-    <TextView
-        android:id="@+id/daylogthoughts_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/allerta"
-        android:text="thoughts"
-        android:textColor="@color/darkBlue"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/log_thought_textview"
-        app:layout_constraintStart_toStartOf="@+id/log_thought_textview"
-        app:layout_constraintTop_toBottomOf="@+id/log_thought_textview" />
 
     <TextView
         android:id="@+id/daylogmood_textview"
@@ -161,49 +149,102 @@
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:fontFamily="@font/allerta"
-        android:text="mood"
+        android:text="@string/mood_text"
         android:textColor="@color/darkBlue"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/log_cause_textview"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/log_mood_textview"
-        app:layout_constraintTop_toTopOf="@+id/log_mood_textview" />
+        app:layout_constraintTop_toTopOf="@+id/log_mood_textview"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/daylogcause_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:id="@+id/scrollView3"
+        android:layout_width="236dp"
+        android:layout_height="88dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/allerta"
-        android:text="cause"
-        android:textColor="@color/darkBlue"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/log_cause_textview"
-        app:layout_constraintStart_toStartOf="@+id/log_cause_textview"
-        app:layout_constraintTop_toBottomOf="@+id/log_cause_textview" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/log_thought_textview">
 
-    <Button
-        android:id="@+id/edit_cause_button"
-        android:layout_width="63dp"
-        android:layout_height="29dp"
-        android:layout_marginStart="8dp"
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daylogthoughts_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/allerta"
+                android:gravity="start"
+                android:padding="10dp"
+                android:text="@string/thoughts_text"
+                android:textColor="@color/darkBlue"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:layout_width="234dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/btn_shape_w"
-        android:fontFamily="@font/allerta"
-        android:text="edit this"
-        android:textColor="@color/darkBlue"
-        android:textSize="10sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/log_cause_textview"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/log_cause_textview"
-        app:layout_constraintTop_toTopOf="@+id/log_cause_textview"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/log_cause_textview"
+        app:layout_constraintVertical_bias="0.0">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/daylogcause_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/allerta"
+                android:gravity="start"
+                android:padding="10dp"
+                android:text="@string/cause_text"
+                android:textColor="@color/darkBlue"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="160dp"
+                tools:layout_editor_absoluteY="486dp" />
+
+            <Button
+                android:id="@+id/edit_cause_button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_shape_w"
+                android:fontFamily="@font/allerta"
+                android:text="@string/retrieval_buttn_text"
+                android:textColor="@color/darkBlue"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

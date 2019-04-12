@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
@@ -28,6 +29,7 @@ public class AllDailyLogsDisplayFragment extends Fragment {
     RecyclerView recyclerView;
     OnFragmentInteractionListener listener;
     DayLogAdapter dayLogAdapter;
+    Button toReoccurringFragment;
 
     public AllDailyLogsDisplayFragment() {
     }
@@ -53,12 +55,27 @@ public class AllDailyLogsDisplayFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        toReoccurringFragment = view.findViewById(R.id.to_reoccurringbehavior_button);
         recyclerView = view.findViewById(R.id.recycler_view_container);
 
         dayLogAdapter = new DayLogAdapter(listener, logs);
         recyclerView.setAdapter(dayLogAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
+
+        toReoccurringFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReoccurringBehaviorFragment reoccurringBehaviorFragment = ReoccurringBehaviorFragment.newInstance();
+                onButtonPressed(reoccurringBehaviorFragment);
+            }
+        });
+    }
+
+    public void onButtonPressed(Fragment fragment) {
+        if (listener != null) {
+            listener.onFragmentInteraction(fragment);
+        }
     }
 
     @Override
@@ -71,6 +88,7 @@ public class AllDailyLogsDisplayFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
     @Override
     public void onDetach() {
         super.onDetach();
