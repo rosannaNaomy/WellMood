@@ -54,7 +54,7 @@ public class InitialFragment extends Fragment {
 
         addLogbtn = view.findViewById(R.id.addLog);
         viewLogsbtn = view.findViewById(R.id.viewLogs);
-        deleteLogsButton = view.findViewById(R.id.cleardata_button);
+       // deleteLogsButton = view.findViewById(R.id.cleardata_button);
 
         OnclickBttns();
     }
@@ -76,12 +76,12 @@ public class InitialFragment extends Fragment {
             }
         });
 
-        deleteLogsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dayLogDatabaseHelper.clearLogList();
-            }
-        });
+//        deleteLogsButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dayLogDatabaseHelper.clearLogList();
+//            }
+//        });
 
     }
 
