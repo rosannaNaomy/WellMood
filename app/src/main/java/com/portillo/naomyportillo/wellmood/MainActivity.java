@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
+import com.portillo.naomyportillo.wellmood.initialfragments.AboutFragment;
 import com.portillo.naomyportillo.wellmood.initialfragments.DayDescriptionFragment;
 import com.portillo.naomyportillo.wellmood.initialfragments.InitialFragment;
 import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractionListener;
@@ -80,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ((item.getItemId())) {
             case R.id.about:
-                Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
+                AboutFragment aboutFragment = AboutFragment.newInstance();
+                onFragmentInteraction(aboutFragment);
                 return true;
 
             case R.id.git:
