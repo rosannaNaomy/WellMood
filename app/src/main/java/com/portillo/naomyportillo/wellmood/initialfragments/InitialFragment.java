@@ -3,6 +3,7 @@ package com.portillo.naomyportillo.wellmood.initialfragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,6 +16,8 @@ import android.widget.Button;
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
 import com.portillo.naomyportillo.wellmood.logfragments.AllDailyLogsDisplayFragment;
+
+import java.util.Objects;
 
 public class InitialFragment extends Fragment {
 
@@ -35,6 +38,7 @@ public class InitialFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Objects.requireNonNull(getActivity()).setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         dayLogDatabaseHelper = DayLogDatabaseHelper.getInstance(getContext());
     }
 
