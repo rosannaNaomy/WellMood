@@ -106,7 +106,7 @@
         app:layout_constraintVertical_bias="0.072" />
 
     <TextView
-        android:id="@+id/okatTextview"
+        android:id="@+id/mood_Textview"
         android:layout_width="@dimen/oval_dim"
         android:layout_height="@dimen/oval_dim"
         android:layout_marginStart="8dp"
@@ -139,7 +139,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toEndOf="@+id/badFeelTextView"
-        app:layout_constraintTop_toBottomOf="@+id/okatTextview"
+        app:layout_constraintTop_toBottomOf="@+id/mood_Textview"
         app:layout_constraintVertical_bias="0.391" />
 
 </android.support.constraint.ConstraintLayout>

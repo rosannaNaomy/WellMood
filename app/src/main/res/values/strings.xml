@@ -40,4 +40,5 @@
     <string name="reoccurring_behavior_month_display_text">This month\'s reoccurring behavior</string>
     <string name="about_description">WellMood is an app that logs your daily moods and thoughts. This app allows you to assess yourself while you notice reoccurring behavior and those causes. Make an entry everyday in order to assess yourself more effectively.</string>
     <string name="about_wellmood_title">About WellMood</string>
+    <string name="causes_for_this_mood_text">Causes for this mood:</string>
 </resources>
