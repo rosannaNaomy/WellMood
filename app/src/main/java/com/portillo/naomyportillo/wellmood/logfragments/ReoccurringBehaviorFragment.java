@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.portillo.naomyportillo.wellmood.R;
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
+import com.portillo.naomyportillo.wellmood.initialfragments.MoodCauseFragment;
 import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractionListener;
 import com.portillo.naomyportillo.wellmood.model.DayLogModel;
 
@@ -30,6 +32,11 @@ public class ReoccurringBehaviorFragment extends Fragment {
     private ImageView badImagaView;
     private ImageView okayImagaView;
     private ImageView terribleImagaView;
+
+    private TextView greatextView;
+    private TextView badtextView;
+    private TextView okaytextView;
+    private TextView terribletextView;
 
     public ReoccurringBehaviorFragment() {
     }
@@ -60,8 +67,31 @@ public class ReoccurringBehaviorFragment extends Fragment {
         okayImagaView = view.findViewById(R.id.load_okay_imageView);
         terribleImagaView = view.findViewById(R.id.load_terrible_imageView);
 
+        greatextView = view.findViewById(R.id.reoccurring_greatTextView);
+        badtextView = view.findViewById(R.id.reoccurring_badFeelTextView);
+        okaytextView = view.findViewById(R.id.reoccurring_okatTextview);
+        terribletextView = view.findViewById(R.id.reoccurring_terribleTextview);
 
         getCount();
+
+        textViewOnClick( greatextView,  greatextView.getText().toString());
+        textViewOnClick(badtextView, badtextView.getText().toString());
+        textViewOnClick(okaytextView, okaytextView.getText().toString());
+        textViewOnClick(terribletextView, terribletextView.getText().toString());
+
+
+    }
+
+    private void textViewOnClick(View view, final String text) {
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DisplayCauseFragment displayCauseFragment = DisplayCauseFragment.newInstance(text);
+                onButtonPressed(displayCauseFragment);
+            }
+        });
     }
 
     private void getCount() {

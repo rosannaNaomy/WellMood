@@ -32,13 +32,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        InitialFragment initialFragment = InitialFragment.newInstance();
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.fragment_container, initialFragment)
-//                .addToBackStack("detailFragment").commit();
-
-
         fragmentManager = getSupportFragmentManager();
         if (savedInstanceState == null) {
             initialFragment();

@@ -68,7 +68,7 @@ public class FeelFragment extends Fragment {
 
         greatTextView = view.findViewById(R.id.excitingTextView);
         badTextView = view.findViewById(R.id.badFeelTextView);
-        okayTextView = view.findViewById(R.id.okatTextview);
+        okayTextView = view.findViewById(R.id.mood_Textview);
         terribleTextView = view.findViewById(R.id.terribleTextview);
 
         textViewOnClick(greatTextView, greatTextView.getText().toString());
