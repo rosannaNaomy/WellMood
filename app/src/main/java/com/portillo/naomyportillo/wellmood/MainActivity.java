@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.portillo.naomyportillo.wellmood.database.DayLogDatabaseHelper;
+import com.portillo.naomyportillo.wellmood.initialfragments.AboutFragment;
 import com.portillo.naomyportillo.wellmood.initialfragments.DayDescriptionFragment;
 import com.portillo.naomyportillo.wellmood.initialfragments.InitialFragment;
 import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractionListener;
@@ -23,24 +24,37 @@ import com.portillo.naomyportillo.wellmood.logfragments.SingleDailyLogDisplayFra
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
 
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        InitialFragment initialFragment = InitialFragment.newInstance();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container, initialFragment)
-                .addToBackStack("detailFragment").commit();
+//        InitialFragment initialFragment = InitialFragment.newInstance();
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.fragment_container, initialFragment)
+//                .addToBackStack("detailFragment").commit();
+
+
+        fragmentManager = getSupportFragmentManager();
+        if (savedInstanceState == null) {
+            initialFragment();
+        }
     }
 
+    public void initialFragment() {
+        InitialFragment initialFragment = InitialFragment.newInstance();
+        onFragmentInteraction(initialFragment);
+    }
 
     @Override
     public void onFragmentInteraction(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
         fragmentTransaction.replace(R.id.fragment_container, fragment)
                 .addToBackStack("nextFragment").commit();
@@ -67,7 +81,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     public boolean onOptionsItemSelected(MenuItem item) {
         switch ((item.getItemId())) {
             case R.id.about:
-                Toast.makeText(this, "about", Toast.LENGTH_SHORT).show();
+                AboutFragment aboutFragment = AboutFragment.newInstance();
+                onFragmentInteraction(aboutFragment);
                 return true;
 
             case R.id.git:

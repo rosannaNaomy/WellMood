@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".initialfragments.DayDescriptionFragment">
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/av_xml"
+        android:layout_width="450dp"
+        android:layout_height="300dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.841"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="radar.json"
+        app:lottie_loop="true" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/av2_xml"
+        android:layout_width="450dp"
+        android:layout_height="300dp"
+        android:background="@android:color/transparent"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.69"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="animation-w800-h800.json"
+        app:lottie_loop="true" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/av3_xml"
+        android:layout_width="450dp"
+        android:layout_height="300dp"
+        android:background="@android:color/transparent"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.702"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="animation-w600-h600.json"
+        app:lottie_loop="true" />
+
+
+    <TextView
+        android:id="@+id/describeDayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/allerta"
+        android:text="@string/dayDescription_describe_your_day_text"
+        android:textColor="@color/darkerBlue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <TextView
+        android:id="@+id/productiveTextView"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
+        android:layout_marginStart="408dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
+        android:text="@string/dayDescription_leftTop"
+        android:textColor="@color/darkerBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/excitingTextView"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
+        android:text="@string/dayDescription_rightTop"
+        android:textColor="@color/darkerBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/productiveTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/unpleasantextView"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
+        android:layout_marginStart="408dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
+        android:text="@string/dayDescription_leftMid"
+        android:textColor="@color/darkerBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productiveTextView" />
+
+    <TextView
+        android:id="@+id/unfortunateTextView"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
+        android:text="@string/dayDescription_rightMid"
+        android:textColor="@color/darkerBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toEndOf="@+id/unpleasantextView"
+        app:layout_constraintTop_toBottomOf="@+id/excitingTextView" />
+
+    <TextView
+        android:id="@+id/delightfulTextView"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
+        android:text="@string/dayDescription_rightBottom"
+        android:textColor="@color/darkerBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/unfortunateTextView"
+        app:layout_constraintVertical_bias="0.619" />
+
+    <TextView
+        android:id="@+id/lazyTextView"
+        android:layout_width="@dimen/oval_dim"
+        android:layout_height="@dimen/oval_dim"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/oval"
+        android:fontFamily="@font/allerta"
+        android:gravity="center"
+        android:text="@string/dayDescription_leftBottom"
+        android:textColor="@color/darkerBlue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/delightfulTextView"
+        app:layout_constraintHorizontal_bias="0.902"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/unpleasantextView"
+        app:layout_constraintVertical_bias="0.619" />
+
+
+</android.support.constraint.ConstraintLayout>

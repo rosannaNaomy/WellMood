@@ -38,4 +38,6 @@
     <string name="initial_view_button_text">View Logs</string>
     <string name="initial_delete_button_text">delete logs</string>
     <string name="reoccurring_behavior_month_display_text">This month\'s reoccurring behavior</string>
+    <string name="about_description">WellMood is an app that logs your daily moods and thoughts. This app allows you to assess yourself while you notice reoccurring behavior and those causes. Make an entry everyday in order to assess yourself more effectively.</string>
+    <string name="about_wellmood_title">About WellMood</string>
 </resources>

@@ -11,22 +11,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/reoccurring_behavior_month_display_text"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/allerta"
         android:gravity="center"
+        android:text="@string/reoccurring_behavior_month_display_text"
         android:textColor="@color/darkerBlue"
-        android:textStyle="bold"        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/reoccurring_greatTextView"
         android:layout_width="@dimen/oval_dim"
         android:layout_height="@dimen/oval_dim"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="96dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/oval"
         android:fontFamily="@font/allerta"
@@ -34,7 +39,7 @@
         android:text="@string/feel_choose_mood_leftTop_text"
         android:textColor="@color/darkerBlue"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.097"
+        app:layout_constraintHorizontal_bias="0.034"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +47,7 @@
         android:id="@+id/reoccurring_badFeelTextView"
         android:layout_width="@dimen/oval_dim"
         android:layout_height="@dimen/oval_dim"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/oval"
         android:fontFamily="@font/allerta"
@@ -58,14 +63,15 @@
         android:id="@+id/reoccurring_okatTextview"
         android:layout_width="@dimen/oval_dim"
         android:layout_height="@dimen/oval_dim"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="96dp"
         android:background="@drawable/oval"
         android:fontFamily="@font/allerta"
         android:gravity="center"
         android:text="@string/feel_choose_mood_rightTop_text"
         android:textColor="@color/darkerBlue"
-        app:layout_constraintStart_toStartOf="@+id/reoccurring_badFeelTextView"
-        app:layout_constraintTop_toBottomOf="@+id/reoccurring_badFeelTextView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/reoccurring_terribleTextview"
@@ -84,19 +90,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/reoccurring_okatTextview"
         app:layout_constraintTop_toBottomOf="@+id/reoccurring_okatTextview"
-        app:layout_constraintVertical_bias="0.215" />
+        app:layout_constraintVertical_bias="0.255" />
 
 
     <ImageView
         android:id="@+id/load_great_imageView"
         android:layout_width="200dp"
-        android:layout_height="@dimen/rect_load_height"
+        android:layout_height="13dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/rectangle_round"
         android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/reoccurring_greatTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toEndOf="@+id/reoccurring_greatTextView"
         app:layout_constraintTop_toTopOf="@+id/reoccurring_greatTextView" />
 
@@ -104,12 +111,13 @@
         android:id="@+id/load_bad_imageView"
         android:layout_width="70dp"
         android:layout_height="@dimen/rect_load_height"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/rectangle_round"
         android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/reoccurring_badFeelTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toEndOf="@+id/reoccurring_badFeelTextView"
         app:layout_constraintTop_toTopOf="@+id/reoccurring_badFeelTextView" />
 
@@ -117,12 +125,13 @@
         android:id="@+id/load_okay_imageView"
         android:layout_width="70dp"
         android:layout_height="@dimen/rect_load_height"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/rectangle_round"
         android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/reoccurring_okatTextview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toEndOf="@+id/reoccurring_okatTextview"
         app:layout_constraintTop_toTopOf="@+id/reoccurring_okatTextview" />
 
@@ -130,13 +139,17 @@
         android:id="@+id/load_terrible_imageView"
         android:layout_width="70dp"
         android:layout_height="@dimen/rect_load_height"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/rectangle_round"
         android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="@+id/reoccurring_terribleTextview"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.251"
         app:layout_constraintStart_toEndOf="@+id/reoccurring_terribleTextview"
-        app:layout_constraintTop_toTopOf="@+id/reoccurring_terribleTextview" />
+        app:layout_constraintTop_toTopOf="@+id/reoccurring_terribleTextview"
+        app:layout_constraintVertical_bias="0.264" />
 
 </android.support.constraint.ConstraintLayout>
