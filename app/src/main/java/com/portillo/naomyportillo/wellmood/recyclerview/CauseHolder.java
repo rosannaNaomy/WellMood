@@ -1,13 +1,12 @@
 package com.portillo.naomyportillo.wellmood.recyclerview;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.portillo.naomyportillo.wellmood.R;
-import com.portillo.naomyportillo.wellmood.initialfragments.OnFragmentInteractionListener;
 import com.portillo.naomyportillo.wellmood.model.DayLogModel;
 
 public class CauseHolder extends RecyclerView.ViewHolder {
